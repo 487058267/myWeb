@@ -1,0 +1,231 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>苏轼人生故事书</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			/* 修改视频容器样式 */
+			.video-carousel {
+				position: relative;
+				margin: 2em auto; /* 保持自动居中 */
+				max-width: 1200px;
+				width: 90%; 
+			}
+
+			.videos-container {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 100%;
+				margin: 0 auto;
+			}
+
+			.videos-container video {
+				display: none;
+				width: 100%; 
+				height: auto;
+				object-fit: cover;
+				background: #000;
+			}
+			
+			.videos-container video.active {
+				display: block;
+			}
+			
+			/* 导航箭头 */
+			.arrow {
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				background: rgba(0,0,0,0.5);
+				color: white;
+				border: none;
+				padding: 15px;
+				font-size: 24px;
+				cursor: pointer;
+				transition: opacity 0.3s;
+				z-index: 10;
+			}
+			
+			.arrow:hover {
+				opacity: 0.8;
+			}
+			
+			.arrow.prev { left: 20px; }
+			.arrow.next { right: 20px; }
+
+			/* 移动端适配 */
+			@media (max-width: 736px) {
+				.videos-container video {
+					height: 300px;
+				}
+				.arrow {
+					padding: 10px;
+					font-size: 18px;
+				}
+			}
+		</style>
+	</head>
+	<body class="no-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Inner -->
+						<div class="inner">
+							<header>
+								<h1>苏轼人生故事书</h1>
+							</header>
+						</div>
+
+					<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html">首页</a></li>
+							<li><a href="pen.html">风雨曲线图</a></li>
+							<li><a href="book.html">苏轼人生故事书</a></li>
+							<li><a href="explanation.html">“归”字解析</a></li>
+							<li><a href="xcx.html">知轼学社小程序</a></li>
+						</ul>
+					</nav>
+
+				</div>
+
+			<!-- Main -->
+				<div class="wrapper style1">
+
+					<div class="container">
+						<article id="main" class="special">
+							<header>
+								<h2>翻书阅尽东坡事</h2>
+								<p>
+									三起三落定风波
+								</p>
+							</header>
+							<div class="video-carousel">
+								<button class="arrow prev">‹</button>
+								<div class="videos-container">
+									<video class="active" controls>
+										<source src="videos/m1.mov" type="video/mp4">
+									</video>
+									<video>
+										<source src="videos/m3.mov" type="video/mp4">
+									</video>
+									<video>
+										<source src="videos/m4.mov" type="video/mp4">
+									</video>
+									<video>
+										<source src="videos/m5.mov" type="video/mp4">
+									</video>
+									<video>
+										<source src="videos/m6.mov" type="video/mp4">
+									</video>
+									<video>
+										<source src="videos/m2.mov" type="video/mp4">
+									</video>
+								</div>
+								<button class="arrow next">›</button>
+							</div>
+						</article>
+						<hr />
+					</div>
+
+				</div>
+
+			<!-- Footer -->
+			<div id="footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+
+							<!-- Contact -->
+								<section class="contact">
+									<header>
+										<h3>知轼学社</h3>
+									</header>
+									<p>欢迎使用我们的网站</p>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const videos = document.querySelectorAll('.videos-container video');
+    let current = 0;
+
+    // 初始化第一个视频
+    videos[current].classList.add('active');
+    videos[current].load(); // 强制加载
+    
+    // 点击视频控件时重新加载
+    videos.forEach(video => {
+        video.addEventListener('click', () => video.load());
+    });
+	
+
+    async function switchVideo(newIndex) {
+        try {
+            const prevVideo = videos[current];
+            prevVideo.removeAttribute('controls'); // 移除旧视频控制栏
+            
+            // 添加淡出效果
+            prevVideo.style.opacity = '0';
+            await new Promise(resolve => setTimeout(resolve, 300));
+            
+            await prevVideo.pause();
+            prevVideo.classList.remove('active');
+            prevVideo.style.opacity = '1'; // 恢复透明度
+            
+            current = newIndex;
+            const nextVideo = videos[current];
+            nextVideo.setAttribute('controls', 'true'); // 为新视频添加控制栏
+            nextVideo.classList.add('active');
+            
+            // 强制加载元数据
+            if(nextVideo.readyState < 2) {
+                nextVideo.load();
+                await new Promise(resolve => 
+                    nextVideo.addEventListener('loadeddata', resolve, {once: true})
+                );
+            }
+            
+            // 直接播放（需要用户已与页面交互）
+            await nextVideo.play().catch(() => {
+                nextVideo.controls = true;
+            });
+
+        } catch (err) {
+            console.error('切换失败:', err);
+        }
+    }
+
+    // 简化后的箭头事件
+    document.querySelector('.arrow.prev').addEventListener('click', () => {
+        const newIndex = (current - 1 + videos.length) % videos.length;
+        switchVideo(newIndex);
+    });
+    document.querySelector('.arrow.next').addEventListener('click', () => {
+        switchVideo((current + 1) % videos.length);
+    });
+});
+</script>
+	</body>
+</html>

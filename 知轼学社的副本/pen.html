@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>风雨曲线图</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="left-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Inner -->
+						<div class="inner">
+							<header>
+								<h1>风雨曲线图</h1>
+							</header>
+						</div>
+
+					<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html">首页</a></li>
+							<li><a href="pen.html">风雨曲线图</a></li>
+							<li><a href="book.html">苏轼人生故事书</a></li>
+							<li><a href="explanation.html">“归”字解析</a></li>
+							<li><a href="xcx.html">知轼学社小程序</a></li>
+						</ul>
+					</nav>
+
+				</div>
+
+			<!-- Main -->
+				<div class="wrapper style1">
+
+					<div class="container">
+						<div class="row gtr-200">
+							<div class="col-4 col-12-mobile" id="sidebar">
+								<hr class="first" />
+								<section>
+									<header>
+										<h3>风雨曲线图示例</h3>
+									</header>
+									<p>
+										<img src="images/wind.jpg" alt="" style="width: 100%; height: auto; object-fit: cover;"/>
+									</p>
+								</section>
+								<hr />
+							</div>
+							<div class="col-8 col-12-mobile imp-mobile" id="content">
+								<article id="main">
+                                    <header>
+                                        <h2>绘制风雨曲线图</h2>
+                                        <p style="font-size: smaller;">
+                                            根据自己对诗词中“风雨”变化的理解，自由绘制风雨曲线图，将抽象的诗词情感具象化。
+                                        </p>
+                                    </header>
+                                    <div style="border: 2px solid #666;">
+                                        <canvas id="drawing-board" width="800" height="400"></canvas>
+                                    </div>
+                                    <div style="margin-top: 20px;">
+                                        <button onclick="clearCanvas()">清除画布</button>
+                                        <input type="color" id="colorPicker" value="#000000">
+                                        <input type="range" style="background-color: blanchedalmond;" id="brushSize" min="1" max="20" value="2">
+									</div>
+                                </article>
+                            </div>
+                        </div>
+                        <hr />
+                        
+                <!-- Footer -->
+                <div id="footer">
+                    <div class="container">
+                                <!-- Contact -->
+                                    <section class="contact">
+                                        <header>
+                                            <h3>知轼学社</h3>
+                                        </header>
+                                        <p>欢迎使用我们的网站</p>
+                    </div>
+                </div>
+
+        </div>
+
+        <!-- Scripts -->
+            <script src="assets/js/jquery.min.js"></script>
+            <script src="assets/js/jquery.dropotron.min.js"></script>
+            <script src="assets/js/jquery.scrolly.min.js"></script>
+            <script src="assets/js/jquery.scrollex.min.js"></script>
+            <script src="assets/js/browser.min.js"></script>
+            <script src="assets/js/breakpoints.min.js"></script>
+            <script src="assets/js/util.js"></script>
+            <script src="assets/js/main.js"></script>
+            <script>
+                // 初始化画板
+                const canvas = document.getElementById('drawing-board');
+                const ctx = canvas.getContext('2d');
+                let isDrawing = false;
+                let lastX = 0;
+                let lastY = 0;
+
+                // 设置初始画笔属性
+                ctx.strokeStyle = '#000000';
+                ctx.lineWidth = 2;
+                ctx.lineJoin = 'round';
+                ctx.lineCap = 'round';
+
+                // 绘图功能实现
+                canvas.addEventListener('mousedown', startDrawing);
+                canvas.addEventListener('mousemove', draw);
+                canvas.addEventListener('mouseup', endDrawing);
+                canvas.addEventListener('mouseleave', endDrawing);
+
+                // 工具事件监听
+                document.getElementById('colorPicker').addEventListener('change', (e) => {
+                    ctx.strokeStyle = e.target.value;
+                });
+                
+                document.getElementById('brushSize').addEventListener('input', (e) => {
+                    ctx.lineWidth = e.target.value;
+                });
+
+                function startDrawing(e) {
+                    isDrawing = true;
+                    [lastX, lastY] = [e.offsetX, e.offsetY];
+                }
+
+                function draw(e) {
+                    if (!isDrawing) return;
+                    ctx.beginPath();
+                    ctx.moveTo(lastX, lastY);
+                    ctx.lineTo(e.offsetX, e.offsetY);
+                    ctx.stroke();
+                    [lastX, lastY] = [e.offsetX, e.offsetY];
+                }
+
+                function endDrawing() {
+                    isDrawing = false;
+                }
+
+                function clearCanvas() {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                }
+            </script>

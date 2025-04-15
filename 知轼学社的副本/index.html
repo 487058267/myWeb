@@ -1,0 +1,187 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>知轼学社</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+		/* 添加全局渐现动画 */
+		@keyframes fadeInUp {
+			from {
+				opacity: 0;
+				transform: translateY(20px);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		/* 首页标题动画 */
+		#header .inner header * {
+			animation: fadeInUp 4s ease-out 1.5s both;
+			opacity: 0;
+		}
+
+		/* 导航菜单动画 */
+		#nav ul li {
+			animation: fadeInUp 4s ease-out 1.5s both;
+			opacity: 0;
+		}
+
+		/* 开始按钮保持原有动画 */
+		.button.circled.scrolly {
+			animation: fadeIn 4.5s ease-out 1s;
+			opacity: 0;
+			animation-fill-mode: forwards;
+		}
+        .video-background  {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;       
+            object-fit: cover; 
+        }
+
+        .video-background video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+		</style>
+	</head>
+	<body class="homepage is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+                    <div class="video-background">
+                        <video autoplay muted loop playsinline>
+                            <source src="videos/index.mov" type="video/mp4">
+                        </video>
+                    </div>
+					<!-- Inner -->
+						<div class="inner">
+							<header>
+								
+								<h1><a href="index.html" id="logo">知轼学社</a></h1>
+								<hr />
+								<p>穿越千年风雨，感悟东坡人生智慧的三重境界</p>
+							</header>
+							<footer>
+                                <style>
+                                /* 在<head>中添加自定义动画 */
+                                @keyframes fadeIn {
+                                    from { opacity: 0; }
+                                    to { opacity: 1; }
+                                }
+
+                                .button.circled.scrolly {
+                                    animation: fadeIn 4s ease-out 1.5s;
+                                    opacity: 0; /* 初始状态不可见 */
+                                    animation-fill-mode: forwards; /* 保持最终状态 */
+                                }
+                                </style>
+                                
+                                <footer>
+                                    <a href="#banner" class="button circled scrolly">开始</a>
+                                </footer>
+							</footer>
+						</div>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li><a href="index.html">首页</a></li>
+								<li><a href="pen.html">风雨曲线图</a></li>
+								<li><a href="book.html">苏轼人生故事书</a></li>
+								<li><a href="explanation.html">“归”字解析</a></li>
+								<li><a href="xcx.html">知轼学社小程序</a></li>
+							</ul>
+						</nav>
+
+				</div>
+
+			<!-- Banner -->
+				<section id="banner">
+					<header>
+						<h2>凭起落 <strong>定风波</strong></h2>
+					</header>
+				</section>
+
+			<!-- Carousel -->
+				<section class="carousel">
+					<div class="reel">
+
+						<article>
+							<a href="pen.html" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+							<header>
+								<h3><a href="pen.html">风雨曲线图</a></h3>
+							</header>
+							<p>以动态曲线图解《定风波》中的自然意象与心境起伏</p>
+						</article>
+
+						<article>
+							<a href="book.html" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
+							<header>
+								<h3><a href="book.html">苏轼人生故事</a></h3>
+							</header>
+							<p>翻书阅尽东坡事</p>
+						</article>
+
+						<article>
+							<a href="explanation.html" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
+							<header>
+								<h3><a href="explanation.html">“归”字解析</a></h3>
+							</header>
+							<p>何处是归程？—— 解构”归“字的多重意蕴</p>
+						</article>
+
+						<article>
+							<a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
+							<header>
+								<h3><a href="xcx.html">知轼学社小程序</a></h3>
+							</header>
+							<p>chatSushi穿越时空对话，绘图，玩小游戏，课后巩固练习</p>
+						</article>
+
+					</div>
+				</section>
+
+			<!-- Footer -->
+				<div id="footer">
+					<div class="container">
+						<div class="row">
+							<div class="col-12">
+
+								<!-- Contact -->
+									<section class="contact">
+										<header>
+											<h3>知轼学社</h3>
+										</header>
+										<p>欢迎使用我们的网站</p>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
