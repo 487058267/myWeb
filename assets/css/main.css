@@ -10,7 +10,7 @@
 
 
 html, body, div, span, applet, object,
-iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
+iframe, h1, h2, h3, h4, h5, h6, blockquote,
 pre, a, abbr, acronym, address, big, cite,
 code, del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var, b,
@@ -25,8 +25,11 @@ section, summary, time, mark, audio, video {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-	font-family: 'MyCustomFont', sans-serif;
 	vertical-align: baseline;}
+
+h1,h2,h3{
+	font-family: 'MyCustomFont', sans-serif;
+}
 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
@@ -116,7 +119,6 @@ input, select, textarea {
 		font-weight: 400;
 		color: #483949;
 		line-height: 1.25em;
-		font-family: 'MyCustomFont', sans-serif;
 	}
 
 	h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -190,6 +192,7 @@ input, select, textarea {
 
 	p {
 		text-align: justify;
+		font-family: 'Courier New', Courier, monospace;
 	}
 
 	br.clear {
@@ -2212,14 +2215,12 @@ input, select, textarea {
 			#header header > p {
 				font-size: 1.25em;
 				margin: 0;
-				font-family: 'MyCustomFont';
 			}
 
 		#header h1 {
 			color: #111010;
 			font-size: 3em;
 			line-height: 1em;
-			font-family: 'MyCustomFont';
 		}
 
 			#header h1 a {
@@ -2332,7 +2333,6 @@ input, select, textarea {
 			}
 
 			#nav > ul > li {
-				font-family: 'MyCustomFont';
 				font-size: larger;
 				display: inline-block;
 				margin: -9px 0.5em 0 0.5em;
@@ -2343,6 +2343,9 @@ input, select, textarea {
 				-webkit-transition: color 0.35s ease-in-out, border-color 0.35s ease-in-out;
 				-ms-transition: color 0.35s ease-in-out, border-color 0.35s ease-in-out;
 				transition: color 0.35s ease-in-out, border-color 0.35s ease-in-out;
+				color: #075175;
+				font-family: '宋体',serif;
+				font-weight: bold;
 			}
 
 				#nav > ul > li.active {
@@ -2468,15 +2471,12 @@ input, select, textarea {
 	#footer {
 		position: relative;
 		overflow: hidden;
-		padding: 6em 0 6em 0;
+		padding: 1em 0 0 0;
 		background: #2b252c;
 		color: #fff;
 	}
 
-		#footer .icon.circled {
-			background: #fff;
-			color: #2b252c;
-		}
+		
 
 		#footer header {
 			text-align: center;
@@ -2493,7 +2493,7 @@ input, select, textarea {
 
 			#footer .contact p {
 				text-align: center;
-				margin: 0 0 3em 0;
+				margin: 0 0 1em 0;
 			}
 
 		#footer .copyright {

@@ -7,9 +7,59 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
+    <style>
+        /* 修改背景图样式 */
+        .wrapper.style1 {
+            background-image: url('images/pen背景.png');
+            background-size: 100% 100%; /* 完全覆盖整个区域 */
+            background-position: center; /* 图片居中显示 */
+            background-repeat: no-repeat; /* 防止图片重复 */
+            min-height: 100vh; /* 确保背景覆盖整个页面高度 */
+            position: relative; /* 添加相对定位 */
+        }
+        
+        /* 内容居中 */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh; /* 设置最小高度 */
+        }
+        
+        /* 调整图片大小 */
+        #main img {
+            width: 120%; /* 图片宽度增加20% */
+            max-width: 1500px; /* 最大宽度调整为960px */
+            height: auto;
+            display: block;
+        }
+        
+        /* 调整画板容器样式 */
+        #content {
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
+            margin-left: 10%;
+            margin-right: auto;
+        }
+        /* 调整图片容器样式 */
+        #main img {
+            width: 90%;
+            max-width: 1000px;
+            height: auto;
+            display: block;
+        }
+                
+        /* 调整图片外层容器样式 */
+        #main > div:first-child {
+            margin-left: -30%; /* 抵消content的margin-left */
+            width: 80vw; /* 使用视口宽度 */
+            text-align: center; /* 确保图片居中 */
+        }
+        </style>
+        
 	<body class="left-sidebar is-preload">
 		<div id="page-wrapper">
-
 			<!-- Header -->
 				<div id="header">
 
@@ -25,61 +75,51 @@
 						<ul>
 							<li><a href="index.html">首页</a></li>
 							<li><a href="pen.html">风雨曲线图</a></li>
-							<li><a href="book.html">苏轼人生故事书</a></li>
-							<li><a href="explanation.html">“归”字解析</a></li>
-							<li><a href="xcx.html">知轼学社小程序</a></li>
+							<li><a href="book.html">人生故事书</a></li>
+							<li><a href="explanation.html">苏轼进课堂</a></li>
+							<li><a href="xcx.html">知轼小程序</a></li>
 						</ul>
 					</nav>
 
 				</div>
 
 			<!-- Main -->
+				
+				<!-- 原有代码保持不变 -->
 				<div class="wrapper style1">
-
-					<div class="container">
-						<div class="row gtr-200">
-							<div class="col-4 col-12-mobile" id="sidebar">
-								<hr class="first" />
-								<section>
-									<header>
-										<h3>风雨曲线图示例</h3>
-									</header>
-									<p>
-										<img src="images/wind.jpg" alt="" style="width: 100%; height: auto; object-fit: cover;"/>
-									</p>
-								</section>
-								<hr />
-							</div>
-							<div class="col-8 col-12-mobile imp-mobile" id="content">
-								<article id="main">
-                                    <header>
-                                        <h2>绘制风雨曲线图</h2>
-                                        <p style="font-size: smaller;">
-                                            根据自己对诗词中“风雨”变化的理解，自由绘制风雨曲线图，将抽象的诗词情感具象化。
-                                        </p>
-                                    </header>
-                                    <div style="border: 2px solid #666;">
-                                        <canvas id="drawing-board" width="800" height="400"></canvas>
-                                    </div>
-                                    <div style="margin-top: 20px;">
-                                        <button onclick="clearCanvas()">清除画布</button>
+				    <div class="container">
+				        <div class="row gtr-200">
+				            <div class="col-8 col-12-mobile imp-mobile" id="content">
+				                <article id="main">
+				                    <!-- 添加图片 -->
+				                    <div>
+				                        <img src="images/wind.PNG" alt="风雨曲线图示例">
+				                    </div>
+				                    <!-- 原有画板代码 -->
+				                    <div style="border: 4px solid #666; border-radius:10px;margin-top: 100px;background-color: white; margin-left: 10%;">
+				                        <canvas id="drawing-board" width="800" height="400"></canvas>
+				                    </div>
+				                    <div style="margin-top: 120px;">
                                         <input type="color" id="colorPicker" value="#000000">
-                                        <input type="range" style="background-color: blanchedalmond;" id="brushSize" min="1" max="20" value="2">
-									</div>
-                                </article>
-                            </div>
-                        </div>
-                        <hr />
+				                        <input type="range" style="background-color: rgb(180, 234, 184);" id="brushSize" min="1" max="20" value="2">
+				                        <button onclick="clearCanvas()">清除画布</button>
+				                    </div>
+				                </article>
+				            </div>
+				        </div>
+				    </div>
+				</div>
+                <hr />
                         
                 <!-- Footer -->
                 <div id="footer">
-                    <div class="container">
-                                <!-- Contact -->
-                                    <section class="contact">
-                                        <header>
-                                            <h3>知轼学社</h3>
-                                        </header>
-                                        <p>欢迎使用我们的网站</p>
+                    <!-- Contact -->
+                    <section class="contact">
+                        <header>
+                            <h3>知轼学社</h3>
+                        </header>
+                        <p>欢迎使用我们的网站</p>
+                    </section>
                     </div>
                 </div>
 
